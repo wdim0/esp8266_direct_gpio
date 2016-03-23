@@ -56,11 +56,11 @@ Reading these registers, will give you 0 - they are just for writing.
 
 It's definitely better to use direct GPIO control of output pins by writing to GPIO_OUT_W1TS_ADDRESS / GPIO_OUT_W1TC_ADDRESS registers. I've briefly looked into Espressif's GPIO driver (gpio.c, gpio.h) but there are no macros dedicated to this exactly. But anyway, it's so easy that we can do our own macros. To give you some hints, look at the following code:
 
-    #define GPIO4		GPIO_INPUT_GET(4)
+    #define GPIO4           GPIO_INPUT_GET(4)
     
-    #define GPIO2_H		GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, 1<<2)
-    #define GPIO2_L		GPIO_REG_WRITE(GPIO_OUT_W1TC_ADDRESS, 1<<2)
-    #define GPIO2(x)		((x)?GPIO2_H:GPIO2_L)
+    #define GPIO2_H         GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, 1<<2)
+    #define GPIO2_L         GPIO_REG_WRITE(GPIO_OUT_W1TC_ADDRESS, 1<<2)
+    #define GPIO2(x)        ((x)?GPIO2_H:GPIO2_L)
     
     ... init
     
