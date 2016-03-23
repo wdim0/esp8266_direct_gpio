@@ -38,7 +38,7 @@ For controlling the output GPIOs in the code it's much better to skip all the un
 The timebase of the scope is set to 2 us per div in both test cases.<br />
 Test A - impulse length is around 12 us.<br />
 Test B - impulse length is around 1.8 us<br />
-=> code B is around 6.5x faster than A
+=> code B is around <b>6.5x faster</b> than A
 
 Tests configuration: ESP8266 running at default 80 MHz, RTOS (SDK 1.4.0)
 	
