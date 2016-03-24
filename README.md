@@ -44,7 +44,7 @@ Tests configuration: ESP8266 running at default 80 MHz, RTOS (SDK 1.4.0)
 	
 ## GPIO_OUT_W1TS/C details
 
-Each register is for all GPIOs - every bit corresponds to one GPIO (GPIO 0 is bit0, GPIO 1 is bit1, ...). You don't need to mask anything. If you just want to set one GPIO H/L, set the proper bit to 1, leave all other to 0. Easy, fancy, fast.
+Each register is for all GPIOs - every bit corresponds to one GPIO (GPIO 0 is bit0, GPIO 1 is bit1, ...). You don't need to mask anything. If you just want to set one GPIO H/L, set the proper bit to 1, leave other bits to 0. Easy, fancy, fast.
 
 GPIO_OUT_W1TS_ADDRESS - write 1 to set GPIO (high)
 
@@ -54,7 +54,7 @@ Reading these registers, will give you 0 - they are just for writing.
 
 ## Conclusion
 
-It's definitely better to use direct GPIO control of output pins by writing to GPIO_OUT_W1TS_ADDRESS / GPIO_OUT_W1TC_ADDRESS registers. I've briefly looked into Espressif's GPIO driver (gpio.c, gpio.h) but there are no macros dedicated to this exactly. But anyway, it's so easy that we can do our own macros. To give you some hints, look at the following code:
+It's definitely better to use direct GPIO control of output pins by writing to GPIO_OUT_W1TS_ADDRESS / GPIO_OUT_W1TC_ADDRESS registers. I've briefly looked into Espressif's GPIO driver (gpio.c, gpio.h) but there are no macros dedicated to this exactly. But anyway, it's so easy that we can do our own macros. To give you some hints:
 
     #define GPIO4           GPIO_INPUT_GET(4)
     
