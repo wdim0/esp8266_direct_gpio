@@ -58,11 +58,11 @@ It's definitely better to use direct GPIO control of output pins by writing to G
 
     ... macros:
 
-    #define GPIO4           GPIO_INPUT_GET(4)
+    #define GPIO4           (GPIO_INPUT_GET(4))
     
-    #define GPIO2_H         GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, 1<<2)
-    #define GPIO2_L         GPIO_REG_WRITE(GPIO_OUT_W1TC_ADDRESS, 1<<2)
-    #define GPIO2(x)        ((x)?(GPIO2_H):(GPIO2_L))
+    #define GPIO2_H         (GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, 1<<2))
+    #define GPIO2_L         (GPIO_REG_WRITE(GPIO_OUT_W1TC_ADDRESS, 1<<2))
+    #define GPIO2(x)        ((x)?GPIO2_H:GPIO2_L)
     
     ... init:
     
