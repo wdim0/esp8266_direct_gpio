@@ -44,7 +44,7 @@ Tests configuration: ESP8266 running at default 80 MHz, RTOS (SDK 1.4.0)
 	
 ## GPIO_OUT_W1TS/C details
 
-Each register is for all GPIOs - every bit corresponds to one GPIO (GPIO 0 is bit0, GPIO 1 is bit1, ...)
+Each register is for all GPIOs - every bit corresponds to one GPIO (GPIO 0 is bit0, GPIO 1 is bit1, ...). You don't need to mask anything. If you just want to set one GPIO H/L, set the proper bit to 1, leave all other to 0. Easy, fancy, fast.
 
 GPIO_OUT_W1TS_ADDRESS - write 1 to set GPIO (high)
 
