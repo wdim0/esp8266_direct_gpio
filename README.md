@@ -54,11 +54,16 @@ Reading these registers, will give you 0 - they are just for writing.
 
 ## Conclusion
 
-It's definitely better to use direct GPIO control of output pins by writing to GPIO_OUT_W1TS_ADDRESS / GPIO_OUT_W1TC_ADDRESS registers. I've briefly looked into Espressif's GPIO driver (gpio.c, gpio.h) but there are no macros dedicated to this exactly. But anyway, it's so easy that we can do our own macros. To give you some hints:
+It's definitely better to use direct GPIO control of output pins by writing to GPIO_OUT_W1TS_ADDRESS / GPIO_OUT_W1TC_ADDRESS registers. I've briefly looked into Espressif's GPIO driver (gpio.c, gpio.h) but there are no macros dedicated to this exactly. But anyway, it's so easy that we can do our own macros.
+
+Also, if you're using standard GPIO_INPUT_GET(...) for reading of GPIO inputs, you can optimize for speed. Just simply read GPIO_IN_ADDRESS register directly like this:<br />
+((GPIO_REG_READ(GPIO_IN_ADDRESS)&(BIT(12)))!=0)
+
+To sum it up and give you some hints:
 
     ... macros:
 
-    #define GPIO4           (GPIO_INPUT_GET(4))
+    #define GPIO4           ((GPIO_REG_READ(GPIO_IN_ADDRESS)&(BIT(4)))!=0) //each bit is for corresponding GPIO
     
     #define GPIO2_H         (GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, 1<<2))
     #define GPIO2_L         (GPIO_REG_WRITE(GPIO_OUT_W1TC_ADDRESS, 1<<2))
