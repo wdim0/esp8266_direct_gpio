@@ -74,8 +74,8 @@ To sum it up and give you some hints:
     PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO2_U, FUNC_GPIO2);
     GPIO_OUTPUT_SET(2, 0); //GPIO2 as output low
     
-    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
     GPIO_DIS_OUTPUT(4); //GPIO4 as input
+    PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
     
     ... work with GPIOs:
     
