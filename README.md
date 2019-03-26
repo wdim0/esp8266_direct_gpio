@@ -1,6 +1,6 @@
 # Faster GPIOs on ESP8266
 
-Do you use standard GPIO_OUTPUT_SET() macros for your bit-banging and do you want make it faster? Well, then you're at the right place. Continue reading and you'll learn how to get 6x faster GPIOs.
+Do you use standard GPIO_OUTPUT_SET() macros for your bit-banging and do you want to make it faster? Well, then you're on the right place. Continue reading and you'll see how to get 6x faster GPIOs compared to standard GPIO_OUTPUT_SET() macros.
 
 The way I see it, GPIO_OUTPUT_SET() was/is intended to be just for first initialization.
 For controlling the output GPIOs in the code it's much better to skip all the unnecessary calling underlying the GPIO_OUTPUT_SET() and set output GPIO pins directly using GPIO_OUT_W1TS_ADDRESS / GPIO_OUT_W1TC_ADDRESS registers. The resulting code will be smaller and faster.
